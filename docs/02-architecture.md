@@ -89,7 +89,7 @@
 | `backend/src/adapters/vmware/` | client สำหรับ vCenter / VR / SRM (REST + SOAP) |
 | `backend/src/storage/` | FileStore, schema (`fields.json`), computed views, session store, bootstrap |
 | `backend/src/utils/` | encryption, network policy, redaction, XML parser, error helpers |
-| `frontend/src/` | React 19 + Vite + Tailwind/MUI: pages, shared components, hooks, API client |
+| `frontend/src/` | React 19 + Vite + Tailwind CSS + lucide-react: pages, shared components, hooks, API client |
 | `scripts/` | test runner |
 
 Dependencies หลักของ backend: `express` 5, `express-session`, `helmet`, `cors`, `axios`, `xml2js`, `zod`
@@ -366,6 +366,9 @@ Build ด้วย Vite (`npm run build`) → `frontend/dist` ซึ่ง backe
 | `SRM_DATA_DIR` | `<root>/data` | โฟลเดอร์ข้อมูล |
 | `SRM_STATE_FILE` | `<data>/application.json` | ไฟล์ state |
 | `APP_BUILD_ID` | — | ส่งกลับใน header `X-App-Build` |
+| `FRONTEND_ORIGIN` | ว่าง | origin เพิ่มเติมที่อนุญาต (comma-separated, ต้องเป็น origin เต็ม) |
+
+> ℹ️ เมื่อ `NODE_ENV` ไม่ใช่ `production` backend ยอมรับ origin `http://localhost:5175` ของ Vite dev server ด้วย
 
 ### Secrets (สร้างอัตโนมัติ — ห้ามเปิดเผย)
 | ตัวแปร | ความหมาย |

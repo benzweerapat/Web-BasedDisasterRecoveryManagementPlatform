@@ -54,7 +54,7 @@ docs/user-manual/
 *.swo
 *~
 
-# Desktop installers and OS vault data
+# Binary build artifacts
 installers/
 *.dmg
 *.exe
@@ -64,8 +64,3 @@ playwright-report/
 test-results/
 *.pkg
 
-# Desktop (Electron) app is not part of this web-only repository
-desktop/
-electron-builder.yml
-.github/workflows/installers.yml
-docs/05-desktop.md

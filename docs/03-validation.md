@@ -10,12 +10,11 @@
 | CA settings | อัปโหลด public test certificate และลบผ่าน authenticated API สำเร็จ ไม่อัปโหลด private key |
 | Production frontend | `npm run build` ผ่าน; ยังมี bundle-size warning |
 | Lint | exit 0, มี 67 warnings เดิม เช่น unused variables |
-| Dependency audit | root และ frontend: 0 vulnerabilities; backend: 2 moderate ใน `nodemon` → `minimatch` (devDependency ใช้ตอนพัฒนาเท่านั้น ไม่อยู่ใน runtime/Docker image) |
+| Dependency audit | root, backend และ frontend: 0 vulnerabilities |
 
 ## สิ่งที่ยังไม่ได้ยืนยัน
 
 - ยังไม่ได้เชื่อมต่อ VMware/AI provider จริง ทดสอบ model availability, appliance compatibility หรือ live Recovery
 - ยังไม่มี portable encrypted backup/import wizard ข้ามเครื่อง หรือการกู้คืน Admin ที่ลืมรหัสผ่านทั้งหมด
-- `npm --prefix backend audit` จะรายงาน 2 moderate จนกว่าจะอัปเดต `nodemon`
 
 ดู [Security](../SECURITY.md) และ [คู่มือผู้ใช้](01-user-manual.md)

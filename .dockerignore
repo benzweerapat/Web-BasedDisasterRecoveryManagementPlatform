@@ -39,8 +39,5 @@ previous-nosql
 source-snapshot.json
 test-cookie*
 test-csrf*
-
-installers
-desktop
 **/*.dmg
 **/*.exe
