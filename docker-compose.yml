@@ -1,0 +1,30 @@
+name: srm-nosql
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3002
+      NODE_ENV: production
+      APP_BUILD_ID: "srm-nosql-parity-20260909"
+    ports:
+      - "127.0.0.1:3002:3002"
+    volumes:
+      - srm-data:/app/data
+    read_only: true
+    tmpfs:
+      - /tmp:noexec,nosuid,size=64m
+    cap_drop:
+      - ALL
+    pids_limit: 128
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3002/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      
+volumes:
+  srm-data: {}
