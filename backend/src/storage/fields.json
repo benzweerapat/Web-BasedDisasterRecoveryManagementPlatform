@@ -1,0 +1,3434 @@
+{
+  "users": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "username": {
+      "type": "varchar",
+      "default": null
+    },
+    "password_hash": {
+      "type": "varchar",
+      "default": null
+    },
+    "role": {
+      "type": "varchar",
+      "default": null
+    },
+    "status": {
+      "type": "varchar",
+      "default": "Active"
+    },
+    "last_login": {
+      "type": "timestamp",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "auth_version": {
+      "type": "integer",
+      "default": 1
+    }
+  },
+  "session": {
+    "sid": {
+      "type": "varchar",
+      "default": null
+    },
+    "sess": {
+      "type": "json",
+      "default": null
+    },
+    "expire": {
+      "type": "timestamp",
+      "default": null
+    }
+  },
+  "connections": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "system_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "site": {
+      "type": "varchar",
+      "default": null
+    },
+    "base_url": {
+      "type": "varchar",
+      "default": null
+    },
+    "username": {
+      "type": "varchar",
+      "default": null
+    },
+    "encrypted_password": {
+      "type": "text",
+      "default": null
+    },
+    "encryption_iv": {
+      "type": "text",
+      "default": null
+    },
+    "encryption_auth_tag": {
+      "type": "text",
+      "default": null
+    },
+    "verify_tls": {
+      "type": "boolean",
+      "default": true
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_tested_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "last_connection_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "credential_source_connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "associated_vcenter_connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "api_base_url": {
+      "type": "varchar",
+      "default": null
+    },
+    "api_version": {
+      "type": "varchar",
+      "default": null
+    },
+    "api_schema_version": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_verified_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "scope_invalidated_at": {
+      "type": "timestamptz",
+      "default": null
+    },
+    "last_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_sync_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "last_sync_error_code": {
+      "type": "varchar",
+      "default": null
+    }
+  },
+  "activity_logs": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "username": {
+      "type": "varchar",
+      "default": null
+    },
+    "role": {
+      "type": "varchar",
+      "default": null
+    },
+    "action": {
+      "type": "varchar",
+      "default": null
+    },
+    "target": {
+      "type": "varchar",
+      "default": null
+    },
+    "status": {
+      "type": "varchar",
+      "default": null
+    },
+    "result": {
+      "type": "text",
+      "default": null
+    },
+    "ip": {
+      "type": "varchar",
+      "default": null
+    },
+    "time": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "system_events": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "event_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "severity": {
+      "type": "varchar",
+      "default": null
+    },
+    "source": {
+      "type": "varchar",
+      "default": null
+    },
+    "message": {
+      "type": "text",
+      "default": null
+    },
+    "object": {
+      "type": "varchar",
+      "default": null
+    },
+    "site": {
+      "type": "varchar",
+      "default": null
+    },
+    "time": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "hosts": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "host_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "varchar",
+      "default": null
+    },
+    "site": {
+      "type": "varchar",
+      "default": null
+    },
+    "power_state": {
+      "type": "varchar",
+      "default": null
+    },
+    "cpu_total": {
+      "type": "int",
+      "default": null
+    },
+    "cpu_usage": {
+      "type": "int",
+      "default": null
+    },
+    "ram_total": {
+      "type": "real",
+      "default": null
+    },
+    "ram_usage": {
+      "type": "real",
+      "default": null
+    },
+    "esxi_product_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "esxi_full_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "pnic_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "hba_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "lun_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "vswitch_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "vnic_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "hba_list": {
+      "type": "jsonb",
+      "default": []
+    },
+    "lun_list": {
+      "type": "jsonb",
+      "default": []
+    },
+    "vswitch_list": {
+      "type": "jsonb",
+      "default": []
+    },
+    "vnic_list": {
+      "type": "jsonb",
+      "default": []
+    },
+    "pnic_list": {
+      "type": "jsonb",
+      "default": []
+    },
+    "connection_state": {
+      "type": "varchar",
+      "default": null
+    },
+    "vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_updated": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "cpu_packages": {
+      "type": "integer",
+      "default": null
+    }
+  },
+  "vcenters": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "display_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "fqdn": {
+      "type": "varchar",
+      "default": null
+    },
+    "site_role": {
+      "type": "varchar",
+      "default": null
+    },
+    "site_label": {
+      "type": "varchar",
+      "default": null
+    },
+    "status": {
+      "type": "varchar",
+      "default": null
+    },
+    "version": {
+      "type": "varchar",
+      "default": null
+    },
+    "build": {
+      "type": "varchar",
+      "default": null
+    },
+    "health": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_update": {
+      "type": "timestamp",
+      "default": null
+    },
+    "cluster_count": {
+      "type": "int",
+      "default": 0
+    },
+    "host_count": {
+      "type": "int",
+      "default": 0
+    },
+    "vm_count": {
+      "type": "int",
+      "default": 0
+    },
+    "datastore_count": {
+      "type": "int",
+      "default": 0
+    },
+    "cpu_usage_pct": {
+      "type": "varchar",
+      "default": null
+    },
+    "mem_usage_pct": {
+      "type": "varchar",
+      "default": null
+    },
+    "storage_usage_pct": {
+      "type": "varchar",
+      "default": null
+    },
+    "connection_id": {
+      "type": "int",
+      "default": null
+    }
+  },
+  "virtual_machines": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "vm_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "varchar",
+      "default": null
+    },
+    "site": {
+      "type": "varchar",
+      "default": null
+    },
+    "power_state": {
+      "type": "varchar",
+      "default": null
+    },
+    "cpu": {
+      "type": "int",
+      "default": null
+    },
+    "ram": {
+      "type": "real",
+      "default": null
+    },
+    "storage": {
+      "type": "real",
+      "default": null
+    },
+    "ip": {
+      "type": "varchar",
+      "default": null
+    },
+    "os": {
+      "type": "varchar",
+      "default": null
+    },
+    "uptime": {
+      "type": "varchar",
+      "default": null
+    },
+    "tools_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "host": {
+      "type": "varchar",
+      "default": null
+    },
+    "cluster": {
+      "type": "varchar",
+      "default": null
+    },
+    "datastore": {
+      "type": "varchar",
+      "default": null
+    },
+    "cluster_moid": {
+      "type": "varchar",
+      "default": null
+    },
+    "parent_folder_moid": {
+      "type": "varchar",
+      "default": null
+    },
+    "usage_sampled_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "detail_error_code": {
+      "type": "varchar",
+      "default": null
+    },
+    "detail_updated_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "protection_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "replications": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "repl_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "vm_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_site": {
+      "type": "varchar",
+      "default": null
+    },
+    "target_site": {
+      "type": "varchar",
+      "default": null
+    },
+    "status": {
+      "type": "varchar",
+      "default": null
+    },
+    "rpo": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_sync": {
+      "type": "timestamp",
+      "default": null
+    },
+    "progress": {
+      "type": "int",
+      "default": 0
+    }
+  },
+  "mappings": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "mapping_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "type": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_site": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_object": {
+      "type": "varchar",
+      "default": null
+    },
+    "target_site": {
+      "type": "varchar",
+      "default": null
+    },
+    "target_object": {
+      "type": "varchar",
+      "default": null
+    },
+    "status": {
+      "type": "varchar",
+      "default": null
+    }
+  },
+  "protection_groups": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "pg_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "varchar",
+      "default": null
+    },
+    "description": {
+      "type": "text",
+      "default": null
+    },
+    "type": {
+      "type": "varchar",
+      "default": null
+    },
+    "direction": {
+      "type": "varchar",
+      "default": null
+    },
+    "status": {
+      "type": "varchar",
+      "default": null
+    },
+    "vm_count": {
+      "type": "int",
+      "default": 0
+    },
+    "recovery_plan": {
+      "type": "varchar",
+      "default": null
+    }
+  },
+  "recovery_plans": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "rp_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "varchar",
+      "default": null
+    },
+    "description": {
+      "type": "text",
+      "default": null
+    },
+    "status": {
+      "type": "varchar",
+      "default": null
+    },
+    "pg_count": {
+      "type": "int",
+      "default": 0
+    },
+    "vm_count": {
+      "type": "int",
+      "default": 0
+    },
+    "last_test": {
+      "type": "timestamp",
+      "default": null
+    },
+    "last_test_result": {
+      "type": "varchar",
+      "default": null
+    }
+  },
+  "tasks": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "task_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "varchar",
+      "default": null
+    },
+    "target": {
+      "type": "varchar",
+      "default": null
+    },
+    "status": {
+      "type": "varchar",
+      "default": null
+    },
+    "progress": {
+      "type": "int",
+      "default": 0
+    },
+    "username": {
+      "type": "varchar",
+      "default": null
+    },
+    "start_time": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "operation_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "remote_connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_row_id": {
+      "type": "integer",
+      "default": null
+    },
+    "vm_id": {
+      "type": "text",
+      "default": null
+    },
+    "replication_id": {
+      "type": "text",
+      "default": null
+    },
+    "upstream_task_id": {
+      "type": "text",
+      "default": null
+    },
+    "request_id": {
+      "type": "text",
+      "default": null
+    },
+    "requested_role": {
+      "type": "varchar",
+      "default": null
+    },
+    "operation_context": {
+      "type": "jsonb",
+      "default": null
+    },
+    "completed_at": {
+      "type": "timestamptz",
+      "default": null
+    },
+    "refresh_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "operation_provider": {
+      "type": "varchar",
+      "default": null
+    },
+    "srm_scope_key": {
+      "type": "text",
+      "default": null
+    },
+    "idempotency_key": {
+      "type": "text",
+      "default": null
+    },
+    "intent_hash": {
+      "type": "text",
+      "default": null
+    },
+    "saga_data": {
+      "type": "jsonb",
+      "default": null
+    }
+  },
+  "datacenters": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "datacenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "varchar",
+      "default": null
+    },
+    "vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_updated": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "clusters": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "cluster_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "varchar",
+      "default": null
+    },
+    "vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_updated": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "datastores": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "datastore_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "varchar",
+      "default": null
+    },
+    "type": {
+      "type": "varchar",
+      "default": null
+    },
+    "capacity": {
+      "type": "bigint",
+      "default": null
+    },
+    "free_space": {
+      "type": "bigint",
+      "default": null
+    },
+    "vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_updated": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "networks": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "network_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "varchar",
+      "default": null
+    },
+    "type": {
+      "type": "varchar",
+      "default": null
+    },
+    "vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_updated": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "vm_datastore_mappings": {
+    "vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "vm_moid": {
+      "type": "varchar",
+      "default": null
+    },
+    "datastore_moid": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "vm_network_mappings": {
+    "vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "vm_moid": {
+      "type": "varchar",
+      "default": null
+    },
+    "network_moid": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "host_datastore_mappings": {
+    "vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "host_moid": {
+      "type": "varchar",
+      "default": null
+    },
+    "datastore_moid": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "host_network_mappings": {
+    "vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "host_moid": {
+      "type": "varchar",
+      "default": null
+    },
+    "network_moid": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "vr_connection_links": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "local_vr_connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "remote_vr_connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "vr_pairings": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "local_vcenter_external_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "remote_vcenter_external_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "local_site_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "remote_site_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "pairing_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "remote_session_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "vr_replications": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "replication_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "direction": {
+      "type": "varchar",
+      "default": null
+    },
+    "vm_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "vm_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_vc_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "target_vc_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_site_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "target_site_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "raw_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "raw_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "normalized_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "rpo_minutes": {
+      "type": "integer",
+      "default": null
+    },
+    "last_sync_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "configuration_state": {
+      "type": "varchar",
+      "default": null
+    },
+    "recovery_state": {
+      "type": "varchar",
+      "default": null
+    },
+    "current_rpo_violation": {
+      "type": "integer",
+      "default": null
+    },
+    "sync_progress_percent": {
+      "type": "integer",
+      "default": null
+    },
+    "inventory_vm_id": {
+      "type": "integer",
+      "default": null
+    },
+    "detail_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "detail_error_code": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "canonical_replication_key": {
+      "type": "varchar",
+      "default": null
+    },
+    "canonical_key_version": {
+      "type": "integer",
+      "default": null
+    },
+    "canonical_identity_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "recovery_solution": {
+      "type": "varchar",
+      "default": null
+    },
+    "configuration_error_message": {
+      "type": "text",
+      "default": null
+    },
+    "configuration_error_details": {
+      "type": "text",
+      "default": null
+    },
+    "last_group_error_message": {
+      "type": "text",
+      "default": null
+    },
+    "last_group_error_details": {
+      "type": "text",
+      "default": null
+    },
+    "recovery_error_message": {
+      "type": "text",
+      "default": null
+    },
+    "target_replication_server_uuid": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_sync_duration_seconds": {
+      "type": "bigint",
+      "default": null
+    },
+    "last_sync_size_bytes": {
+      "type": "bigint",
+      "default": null
+    },
+    "quiescing_enabled": {
+      "type": "boolean",
+      "default": null
+    },
+    "network_compression_enabled": {
+      "type": "boolean",
+      "default": null
+    },
+    "encryption_enabled": {
+      "type": "boolean",
+      "default": null
+    },
+    "auto_replicate_new_disks_enabled": {
+      "type": "boolean",
+      "default": null
+    },
+    "mpit_enabled": {
+      "type": "boolean",
+      "default": null
+    },
+    "mpit_instances": {
+      "type": "integer",
+      "default": null
+    },
+    "mpit_days": {
+      "type": "integer",
+      "default": null
+    },
+    "vm_data_sets_replication_enabled": {
+      "type": "boolean",
+      "default": null
+    },
+    "enhanced_replication": {
+      "type": "boolean",
+      "default": null
+    },
+    "disk_collection_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "disk_collection_error_code": {
+      "type": "varchar",
+      "default": null
+    },
+    "replicated_disk_summary": {
+      "type": "jsonb",
+      "default": null
+    }
+  },
+  "vr_sync_state": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "current_sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_sync_started_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "last_successful_sync_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "last_partial_sync_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "last_failed_sync_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "last_error_code": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_pairing_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "last_observation_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "last_canonical_replication_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "visibility_sync_status": {
+      "type": "varchar",
+      "default": {
+        "$now": true
+      }
+    },
+    "visibility_sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "vr_info_sync_status": {
+      "type": "varchar",
+      "default": {
+        "$now": true
+      }
+    },
+    "management_servers_sync_status": {
+      "type": "varchar",
+      "default": {
+        "$now": true
+      }
+    },
+    "replication_servers_sync_status": {
+      "type": "varchar",
+      "default": {
+        "$now": true
+      }
+    },
+    "pairing_issues_sync_status": {
+      "type": "varchar",
+      "default": {
+        "$now": true
+      }
+    },
+    "replication_issues_sync_status": {
+      "type": "varchar",
+      "default": {
+        "$now": true
+      }
+    },
+    "tasks_sync_status": {
+      "type": "varchar",
+      "default": {
+        "$now": true
+      }
+    },
+    "last_issue_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "last_server_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "last_task_count": {
+      "type": "integer",
+      "default": 0
+    }
+  },
+  "vr_management_servers": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "vrms_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "server_scope": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "varchar",
+      "default": null
+    },
+    "safe_url": {
+      "type": "varchar",
+      "default": null
+    },
+    "server_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "version": {
+      "type": "varchar",
+      "default": null
+    },
+    "build_number": {
+      "type": "varchar",
+      "default": null
+    },
+    "vc_guid": {
+      "type": "varchar",
+      "default": null
+    },
+    "vc_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "extension_key": {
+      "type": "varchar",
+      "default": null
+    },
+    "certificate_warning_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "certificate_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "certificate_not_after": {
+      "type": "bigint",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "vr_replication_servers": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "vrms_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "server_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "server_scope": {
+      "type": "varchar",
+      "default": null
+    },
+    "server_uuid": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "varchar",
+      "default": null
+    },
+    "hostname": {
+      "type": "varchar",
+      "default": null
+    },
+    "safe_configuration_url": {
+      "type": "varchar",
+      "default": null
+    },
+    "connected": {
+      "type": "boolean",
+      "default": null
+    },
+    "decommissioned": {
+      "type": "boolean",
+      "default": null
+    },
+    "internally_managed": {
+      "type": "boolean",
+      "default": null
+    },
+    "replication_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "safe_fault": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "vr_pairing_issues": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "issue_fingerprint": {
+      "type": "varchar",
+      "default": null
+    },
+    "entity": {
+      "type": "varchar",
+      "default": null
+    },
+    "entity_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "description": {
+      "type": "text",
+      "default": null
+    },
+    "occurred_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "raw_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "severity": {
+      "type": "varchar",
+      "default": null
+    },
+    "issue_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "first_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "vr_replication_issues": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "replication_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "canonical_replication_key": {
+      "type": "varchar",
+      "default": null
+    },
+    "direction": {
+      "type": "varchar",
+      "default": null
+    },
+    "mapping_status": {
+      "type": "varchar",
+      "default": "UNMATCHED"
+    },
+    "issue_fingerprint": {
+      "type": "varchar",
+      "default": null
+    },
+    "entity": {
+      "type": "varchar",
+      "default": null
+    },
+    "entity_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "description": {
+      "type": "text",
+      "default": null
+    },
+    "occurred_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "raw_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "severity": {
+      "type": "varchar",
+      "default": null
+    },
+    "issue_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "first_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "vr_tasks": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "task_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "description": {
+      "type": "varchar",
+      "default": null
+    },
+    "description_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "entity": {
+      "type": "varchar",
+      "default": null
+    },
+    "entity_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "raw_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "normalized_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "progress_percent": {
+      "type": "integer",
+      "default": null
+    },
+    "queued_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "started_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "completed_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "safe_error_message": {
+      "type": "text",
+      "default": null
+    },
+    "safe_error_details": {
+      "type": "text",
+      "default": null
+    },
+    "safe_result_summary": {
+      "type": "text",
+      "default": null
+    },
+    "result_truncated": {
+      "type": "boolean",
+      "default": false
+    },
+    "normalization_status": {
+      "type": "varchar",
+      "default": "OK"
+    },
+    "normalization_error_code": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_recent": {
+      "type": "boolean",
+      "default": true
+    },
+    "first_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "srm_connection_links": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "local_srm_connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "remote_srm_connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "srm_tasks": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "task_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "task_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "description": {
+      "type": "text",
+      "default": null
+    },
+    "entity_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "entity_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "entity_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "raw_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "normalized_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "progress_percent": {
+      "type": "integer",
+      "default": null
+    },
+    "queued_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "started_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "completed_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "safe_error_message": {
+      "type": "text",
+      "default": null
+    },
+    "safe_result_summary": {
+      "type": "text",
+      "default": null
+    },
+    "result_truncated": {
+      "type": "boolean",
+      "default": null
+    },
+    "normalization_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "normalization_error_code": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_recent": {
+      "type": "boolean",
+      "default": true
+    },
+    "first_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "srm_site_pairs": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "canonical_site_pair_key": {
+      "type": "varchar",
+      "default": null
+    },
+    "canonical_key_version": {
+      "type": "integer",
+      "default": null
+    },
+    "canonical_identity_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "canonical_identity_error_code": {
+      "type": "varchar",
+      "default": null
+    },
+    "pairing_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "local_site_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "remote_site_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "local_vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "remote_vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "pairing_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "remote_session_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "issue_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "srm_servers": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "srm_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "server_scope": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "varchar",
+      "default": null
+    },
+    "address": {
+      "type": "varchar",
+      "default": null
+    },
+    "version": {
+      "type": "varchar",
+      "default": null
+    },
+    "build": {
+      "type": "varchar",
+      "default": null
+    },
+    "status": {
+      "type": "varchar",
+      "default": null
+    },
+    "vcenter_external_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "issue_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "srm_protection_groups": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "protection_group_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "canonical_key": {
+      "type": "varchar",
+      "default": null
+    },
+    "canonical_key_version": {
+      "type": "integer",
+      "default": null
+    },
+    "canonical_identity_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "canonical_identity_error_code": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "varchar",
+      "default": null
+    },
+    "description": {
+      "type": "text",
+      "default": null
+    },
+    "group_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "raw_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "normalized_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_site_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "target_site_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "target_vcenter_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "vm_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "protected_vm_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "unprotected_vm_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "recovery_plan_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "issue_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "raw_recovery_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "normalized_recovery_status": {
+      "type": "varchar",
+      "default": null
+    }
+  },
+  "srm_protected_vms": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "protection_group_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "protected_vm_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_vm_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "target_vm_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "inventory_vm_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "canonical_replication_key": {
+      "type": "varchar",
+      "default": null
+    },
+    "vm_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "raw_protection_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "normalized_protection_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "placeholder_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "recovery_location_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "issue_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "srm_recovery_plans": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "recovery_plan_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "canonical_key": {
+      "type": "varchar",
+      "default": null
+    },
+    "canonical_key_version": {
+      "type": "integer",
+      "default": null
+    },
+    "canonical_identity_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "canonical_identity_error_code": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "varchar",
+      "default": null
+    },
+    "description": {
+      "type": "text",
+      "default": null
+    },
+    "raw_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "normalized_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_site_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "recovery_site_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "protection_group_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "vm_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "issue_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "last_run_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_run_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_run_started_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "last_run_completed_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "test_steps_availability": {
+      "type": "varchar",
+      "default": "NOT_COLLECTED"
+    },
+    "history_availability": {
+      "type": "varchar",
+      "default": "NOT_COLLECTED"
+    },
+    "history_task_id": {
+      "type": "text",
+      "default": null
+    },
+    "read_availability_collected_at": {
+      "type": "timestamptz",
+      "default": null
+    }
+  },
+  "srm_recovery_plan_groups": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "recovery_plan_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "protection_group_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "srm_recovery_plan_vms": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "recovery_plan_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "recovery_plan_vm_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "protected_vm_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_vm_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_vcenter_external_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "inventory_vm_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "priority_group": {
+      "type": "varchar",
+      "default": null
+    },
+    "dependency_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "recovery_settings_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "ip_customization_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "mapping_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "srm_inventory_mappings": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "srm_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "server_scope": {
+      "type": "varchar",
+      "default": null
+    },
+    "mapping_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "mapping_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_object_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_object_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_object_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "target_object_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "target_object_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "target_object_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "mapping_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "is_default_mapping": {
+      "type": "boolean",
+      "default": null
+    },
+    "issue_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "data_source": {
+      "type": "varchar",
+      "default": "REST"
+    },
+    "reverse_mapping_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "reverse_recovery_object_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "reverse_recovery_object_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "test_network_mapping": {
+      "type": "jsonb",
+      "default": null
+    },
+    "ip_mapping": {
+      "type": "jsonb",
+      "default": null
+    },
+    "policy_resolution": {
+      "type": "jsonb",
+      "default": null
+    }
+  },
+  "srm_placeholder_datastores": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "srm_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "server_scope": {
+      "type": "varchar",
+      "default": null
+    },
+    "placeholder_datastore_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "site_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "vcenter_external_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "inventory_datastore_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "datastore_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "datastore_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "capacity_bytes": {
+      "type": "bigint",
+      "default": null
+    },
+    "free_space_bytes": {
+      "type": "bigint",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "srm_issues": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "issue_scope": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_entity_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "source_entity_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "issue_fingerprint": {
+      "type": "varchar",
+      "default": null
+    },
+    "severity": {
+      "type": "varchar",
+      "default": null
+    },
+    "issue_type": {
+      "type": "varchar",
+      "default": null
+    },
+    "entity_name": {
+      "type": "varchar",
+      "default": null
+    },
+    "safe_description": {
+      "type": "text",
+      "default": null
+    },
+    "occurred_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "first_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "srm_sync_state": {
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "core_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "pairing_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "server_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "protection_group_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "protected_vm_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "recovery_plan_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "recovery_plan_vm_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "mapping_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "placeholder_datastore_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "issue_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "task_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_sync_started_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "last_successful_sync_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "last_partial_sync_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "last_failed_sync_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "last_error_code": {
+      "type": "varchar",
+      "default": null
+    },
+    "last_pairing_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "last_protection_group_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "last_recovery_plan_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "last_mapping_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "last_placeholder_datastore_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "last_issue_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "network_mapping_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "test_network_mapping_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "folder_mapping_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "resource_mapping_sync_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "storage_policy_mapping_sync_status": {
+      "type": "varchar",
+      "default": null
+    }
+  },
+  "srm_recovery_history": {
+    "id": {
+      "type": "bigserial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "recovery_plan_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "history_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "execution_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "name": {
+      "type": "text",
+      "default": null
+    },
+    "mode": {
+      "type": "varchar",
+      "default": null
+    },
+    "run_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "start_time": {
+      "type": "timestamp",
+      "default": null
+    },
+    "end_time": {
+      "type": "timestamp",
+      "default": null
+    },
+    "steps": {
+      "type": "jsonb",
+      "default": []
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "srm_recovery_plan_steps": {
+    "id": {
+      "type": "bigserial",
+      "default": null
+    },
+    "connection_id": {
+      "type": "integer",
+      "default": null
+    },
+    "pairing_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "recovery_plan_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "view_mode": {
+      "type": "varchar",
+      "default": "test"
+    },
+    "step_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "step_number": {
+      "type": "integer",
+      "default": null
+    },
+    "title": {
+      "type": "text",
+      "default": null
+    },
+    "raw_status": {
+      "type": "varchar",
+      "default": null
+    },
+    "progress": {
+      "type": "integer",
+      "default": null
+    },
+    "start_time": {
+      "type": "timestamp",
+      "default": null
+    },
+    "finish_time": {
+      "type": "timestamp",
+      "default": null
+    },
+    "child_count": {
+      "type": "integer",
+      "default": null
+    },
+    "depth": {
+      "type": "integer",
+      "default": null
+    },
+    "warnings": {
+      "type": "jsonb",
+      "default": []
+    },
+    "errors": {
+      "type": "jsonb",
+      "default": []
+    },
+    "referred_object": {
+      "type": "jsonb",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_seen_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "sync_run_id": {
+      "type": "varchar",
+      "default": null
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "public": {
+    "host_moid": {
+      "type": "character",
+      "default": null
+    },
+    "resource_pool_moid": {
+      "type": "character",
+      "default": null
+    },
+    "guest_os_id": {
+      "type": "character",
+      "default": null
+    },
+    "guest_os_full_name": {
+      "type": "character",
+      "default": null
+    },
+    "dns_name": {
+      "type": "character",
+      "default": null
+    },
+    "primary_ip": {
+      "type": "character",
+      "default": null
+    },
+    "ip_addresses": {
+      "type": "jsonb",
+      "default": null
+    },
+    "tools_running_status": {
+      "type": "character",
+      "default": null
+    },
+    "tools_version_status": {
+      "type": "character",
+      "default": null
+    },
+    "hardware_version": {
+      "type": "character",
+      "default": null
+    },
+    "configured_vcpu": {
+      "type": "integer",
+      "default": null
+    },
+    "configured_memory_mib": {
+      "type": "integer",
+      "default": null
+    },
+    "cpu_usage_mhz": {
+      "type": "integer",
+      "default": null
+    },
+    "memory_usage_mib": {
+      "type": "integer",
+      "default": null
+    },
+    "storage_committed_bytes": {
+      "type": "bigint",
+      "default": null
+    },
+    "storage_uncommitted_bytes": {
+      "type": "bigint",
+      "default": null
+    },
+    "detail_status": {
+      "type": "character",
+      "default": null
+    },
+    "guest_data_updated_at": {
+      "type": "timestamp",
+      "default": null
+    },
+    "cluster_moid": {
+      "type": "character",
+      "default": null
+    },
+    "vendor": {
+      "type": "character",
+      "default": null
+    },
+    "model": {
+      "type": "character",
+      "default": null
+    },
+    "cpu_model": {
+      "type": "character",
+      "default": null
+    },
+    "cpu_mhz": {
+      "type": "integer",
+      "default": null
+    },
+    "cpu_cores": {
+      "type": "integer",
+      "default": null
+    },
+    "cpu_threads": {
+      "type": "integer",
+      "default": null
+    },
+    "total_memory_bytes": {
+      "type": "bigint",
+      "default": null
+    },
+    "esxi_version": {
+      "type": "character",
+      "default": null
+    },
+    "esxi_build": {
+      "type": "character",
+      "default": null
+    },
+    "overall_status": {
+      "type": "character",
+      "default": null
+    },
+    "product_name": {
+      "type": "character",
+      "default": null
+    },
+    "version": {
+      "type": "character",
+      "default": null
+    },
+    "build": {
+      "type": "character",
+      "default": null
+    },
+    "health_status": {
+      "type": "character",
+      "default": null
+    },
+    "database_health": {
+      "type": "character",
+      "default": null
+    },
+    "storage_health": {
+      "type": "character",
+      "default": null
+    },
+    "memory_health": {
+      "type": "character",
+      "default": null
+    },
+    "load_health": {
+      "type": "character",
+      "default": null
+    },
+    "uptime_seconds": {
+      "type": "bigint",
+      "default": null
+    },
+    "last_health_sync_at": {
+      "type": "timestamp",
+      "default": null
+    }
+  },
+  "sessions": {
+    "sid": {
+      "type": "text",
+      "default": null
+    },
+    "session": {
+      "type": "json",
+      "default": null
+    },
+    "expires": {
+      "type": "timestamp",
+      "default": null
+    }
+  },
+  "resource_pools": {
+    "id": {
+      "type": "serial",
+      "default": null
+    },
+    "vcenter_id": {
+      "type": "text",
+      "default": null
+    },
+    "pool_id": {
+      "type": "text",
+      "default": null
+    },
+    "name": {
+      "type": "text",
+      "default": null
+    },
+    "is_present": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_updated": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  },
+  "app_settings": {
+    "key": {
+      "type": "varchar",
+      "default": null
+    },
+    "value": {
+      "type": "json",
+      "default": null
+    },
+    "updated_at": {
+      "type": "timestamp",
+      "default": {
+        "$now": true
+      }
+    }
+  }
+}

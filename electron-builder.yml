@@ -1,0 +1,43 @@
+appId: org.kmitl.srmmonitoring
+productName: SRM Monitoring
+asar: true
+npmRebuild: false
+afterPack: desktop/after-pack.cjs
+directories:
+  output: installers
+files:
+  - desktop/main.cjs
+  - package.json
+extraResources:
+  - from: backend
+    to: server/backend
+    filter:
+      - server.js
+      - db.js
+      - src/**/*
+      - package.json
+      - node_modules/**/*
+      - '!**/*.test.js'
+      - '!**/.env*'
+  - from: frontend/dist
+    to: server/frontend/dist
+mac:
+  category: public.app-category.developer-tools
+  identity: '-'
+  hardenedRuntime: true
+  entitlements: desktop/entitlements.mac.plist
+  entitlementsInherit: desktop/entitlements.mac.plist
+  target:
+    - pkg
+    - zip
+win:
+  signAndEditExecutable: false
+  target:
+    - target: nsis
+      arch: [x64]
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  deleteAppDataOnUninstall: false
+artifactName: SRM-Monitoring-${version}-${os}-${arch}.${ext}

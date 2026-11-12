@@ -1,0 +1,41 @@
+name: Desktop installers
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  installers:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts
+      - run: npm --prefix backend ci --omit=dev --ignore-scripts
+      - run: npm --prefix frontend ci --ignore-scripts
+      - run: npm run check:publish
+      - run: npm test
+      - run: npm run dist:mac
+        if: runner.os == 'macOS'
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      - run: npm run dist:win
+        if: runner.os == 'Windows'
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: SRM-Monitoring-${{ runner.os }}
+          if-no-files-found: error
+          path: |
+            installers/*.pkg
+            installers/*.exe
+            installers/*.zip

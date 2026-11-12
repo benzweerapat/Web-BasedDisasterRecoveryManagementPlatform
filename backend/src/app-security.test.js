@@ -1,0 +1,57 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const crypto = require('node:crypto');
+const http = require('node:http');
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
+
+test('web setup, authentication, encrypted settings, role boundaries and server CRUD', async t => {
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'srm-web-test-'));
+ Object.assign(process.env,{NODE_ENV:'production',PORT:'3002',FRONTEND_ORIGIN:'',SESSION_SECRET:crypto.randomBytes(48).toString('hex'),VMWARE_CREDENTIAL_KEY:crypto.randomBytes(32).toString('base64'),SRM_STATE_FILE:path.join(dir,'application.json')});
+ const app=require('./app');const server=app.listen(0,'127.0.0.1');await new Promise(resolve=>server.once('listening',resolve));
+ t.after(async()=>{await new Promise(resolve=>server.close(resolve));fs.rmSync(dir,{recursive:true,force:true});});
+ function client(){let cookie='',csrf='';return async(url,{method='GET',data,headers={}}={})=>new Promise((resolve,reject)=>{
+  const body=data===undefined?undefined:JSON.stringify(data);
+  const req=http.request({hostname:'127.0.0.1',port:server.address().port,path:url,method,headers:{Host:'localhost:3002',Cookie:cookie,'X-CSRF-Token':csrf,...(body?{'Content-Type':'application/json'}:{}),...headers}},res=>{let text='';res.on('data',chunk=>text+=chunk);res.on('end',()=>{if(res.headers['set-cookie'])cookie=res.headers['set-cookie'][0].split(';')[0];if(res.headers['x-csrf-token'])csrf=res.headers['x-csrf-token'];resolve({status:res.statusCode,headers:res.headers,body:text?JSON.parse(text):null});});});req.on('error',reject);req.end(body);
+ });}
+ const admin=client(),anonymous=client();
+ assert.equal((await anonymous('/api/health')).status,200);
+ assert.equal((await anonymous('/api/connections')).status,401);
+ assert.equal((await anonymous('/api/connections',{headers:{Origin:'https://evil.example.invalid'}})).status,403);
+ assert.equal((await anonymous('/api/health',{headers:{Host:'evil.example.invalid'}})).status,403);
+ const password=crypto.randomBytes(16).toString('hex');
+ await admin('/api/security/csrf-token');
+ assert.equal((await admin('/api/auth/setup',{method:'POST',data:{username:'test-admin',password}})).status,200);
+ assert.equal((await admin('/api/auth/setup',{method:'POST',data:{username:'second-admin',password}})).status,409);
+ const vmPassword=crypto.randomBytes(24).toString('hex');
+ const serverPayload={name:'Test vCenter',type:'VCENTER',site:'TEST',baseUrl:'https://vcenter.example.invalid',username:'mock-vm-user',password:vmPassword,verifyTls:true,vcenterId:null};
+ assert.equal((await admin('/api/connections',{method:'POST',data:serverPayload})).status,200);
+ let list=await admin('/api/connections');const id=list.body[0].id;
+ assert.equal(JSON.stringify(list).includes(vmPassword),false);
+ const edit={...serverPayload,name:'Edited server'};delete edit.password;
+ assert.equal((await admin(`/api/connections/${id}`,{method:'PUT',data:edit})).status,200);
+ assert.equal((await admin('/api/connections',{method:'POST',data:{...serverPayload,baseUrl:'http://vcenter.example.invalid'}})).status,400);
+ const key=crypto.randomBytes(24).toString('hex');
+ const ai={enabled:true,model:'mock-model',fallbackModel:'',timeoutMs:30000,apiKey:key,allowExternalSharing:true};
+ assert.equal((await admin('/api/settings/ai',{method:'PUT',data:{...ai,allowExternalSharing:false}})).status,400);
+ assert.equal((await admin('/api/settings/ai',{method:'PUT',data:ai})).status,200);
+ const settings=await admin('/api/settings/ai');assert.equal(settings.body.data.hasApiKey,true);assert.equal(JSON.stringify(settings).includes(key),false);
+ const saved=fs.readFileSync(path.join(dir,'application.json'),'utf8');assert.equal(saved.includes(key),false);assert.equal(saved.includes(vmPassword),false);assert.equal(saved.includes(password),false);
+ assert.equal((await require('./services/web-settings.service').aiRuntime()).GEMINI_API_KEY,key);
+ const viewerPassword=crypto.randomBytes(16).toString('hex');
+ assert.equal((await admin('/api/users',{method:'POST',data:{username:'test-viewer',role:'VIEWER',isActive:true,password:viewerPassword,currentPassword:password}})).status,200);
+ const viewer=client();await viewer('/api/security/csrf-token');assert.equal((await viewer('/api/auth/login',{method:'POST',data:{username:'test-viewer',password:viewerPassword}})).status,200);
+ assert.equal((await viewer('/api/connections')).status,200);assert.equal((await viewer('/api/settings/ai')).status,403);
+ assert.equal((await viewer(`/api/connections/${id}`,{method:'DELETE'})).status,403);
+ const users=(await admin('/api/users')).body.data;const viewerId=users.find(u=>u.username==='test-viewer').id;const adminId=users.find(u=>u.username==='test-admin').id;
+ assert.equal((await admin(`/api/users/${viewerId}`,{method:'PUT',data:{username:'test-viewer',role:'VIEWER',isActive:false,currentPassword:password}})).status,200);
+ assert.equal((await viewer('/api/connections')).status,401);
+ assert.equal((await admin(`/api/users/${adminId}`,{method:'PUT',data:{username:'test-admin',role:'VIEWER',isActive:true,currentPassword:password}})).status,409);
+ assert.equal((await admin('/api/settings/ai',{method:'PUT',data:{enabled:false,model:'mock-model',fallbackModel:'',timeoutMs:30000,clearApiKey:true,allowExternalSharing:false}})).status,200);
+ assert.equal((await admin('/api/settings/ai')).body.data.hasApiKey,false);
+ assert.equal((await admin(`/api/connections/${id}`,{method:'DELETE'})).status,200);
+ assert.equal((await admin('/api/connections')).body.length,0);
+ assert.equal((await admin('/api/auth/logout',{method:'POST'})).status,200);
+ assert.equal((await admin('/api/connections')).status,401);
+});

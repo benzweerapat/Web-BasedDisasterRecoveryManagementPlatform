@@ -1,0 +1,25 @@
+{
+  "name": "srm-nosql",
+  "private": true,
+  "scripts": {
+    "start": "node backend/server.js",
+    "build": "npm --prefix frontend run build",
+    "test": "node scripts/run-tests.mjs",
+    "lint": "npm --prefix frontend run lint",
+    "check:publish": "node scripts/check-publish.mjs",
+    "desktop": "electron .",
+    "dist:mac": "npm run build && electron-builder --mac --arm64 --x64 --publish never",
+    "dist:win": "npm run build && electron-builder --win --publish never"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "description": "Local VMware disaster recovery monitoring and management with JSON storage",
+  "version": "2.0.0",
+  "main": "desktop/main.cjs",
+  "author": "SRM Monitoring contributors",
+  "devDependencies": {
+    "electron": "45.1.0",
+    "electron-builder": "26.18.0"
+  }
+}

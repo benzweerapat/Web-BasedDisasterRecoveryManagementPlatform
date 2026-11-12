@@ -1,0 +1,65 @@
+# Dependencies and build output (all packages)
+node_modules/
+dist/
+coverage/
+.cache/
+.vite/
+
+# Runtime configuration and private inventory
+.env*
+!.env.example
+connections.json*
+data/
+backups/
+previous-nosql/
+output/
+outputs/
+work/
+.claude/
+.idea/
+.vscode/
+.aws/
+.ssh/
+*.pid
+*.tmp
+*.log
+*.bak
+*.backup
+*-result.json
+*-audit.json
+source-snapshot.json
+test-cookie*
+test-csrf*
+
+# Office/PDF exports often embed screenshots of real lab infrastructure
+# (private IPs, hostnames, VM names) and author metadata. Publish Markdown
+# docs instead, or sanitize screenshots before force-adding an export.
+docs/user-manual/
+*.docx
+*.pdf
+
+# Credential bundles and archives
+*.key
+*.pem
+*.p12
+*.pfx
+*.zip
+*.tar
+*.gz
+
+# OS and editor metadata
+.DS_Store
+._*
+*.swp
+*.swo
+*~
+
+# Desktop installers and OS vault data
+installers/
+*.dmg
+*.exe
+*.blockmap
+*.bin
+playwright-report/
+test-results/
+*.pkg
