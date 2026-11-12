@@ -11,13 +11,11 @@
 | Production frontend | `npm run build` ผ่าน; ยังมี bundle-size warning |
 | Lint | exit 0, มี 67 warnings เดิม เช่น unused variables |
 | Dependency audit | root และ frontend: 0 vulnerabilities; backend: 2 moderate ใน `nodemon` → `minimatch` (devDependency ใช้ตอนพัฒนาเท่านั้น ไม่อยู่ใน runtime/Docker image) |
-| Publish guard | ผ่าน; ปฏิเสธ `.docx`/`.pdf`, private IP, path ส่วนตัว, token และไฟล์ runtime |
 
 ## สิ่งที่ยังไม่ได้ยืนยัน
 
 - ยังไม่ได้เชื่อมต่อ VMware/AI provider จริง ทดสอบ model availability, appliance compatibility หรือ live Recovery
 - ยังไม่มี portable encrypted backup/import wizard ข้ามเครื่อง หรือการกู้คืน Admin ที่ลืมรหัสผ่านทั้งหมด
-- ตัวตรวจ secrets ไม่ครอบคลุมทุกชนิดหรือ Git history; ไม่มีการรับรองว่า source ปลอดภัยสมบูรณ์
-- `npm --prefix backend audit` ใน CI จะไม่ผ่านจนกว่าจะอัปเดต `nodemon`
+- `npm --prefix backend audit` จะรายงาน 2 moderate จนกว่าจะอัปเดต `nodemon`
 
 ดู [Security](../SECURITY.md) และ [คู่มือผู้ใช้](01-user-manual.md)

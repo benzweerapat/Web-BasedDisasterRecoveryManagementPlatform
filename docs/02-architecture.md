@@ -90,7 +90,7 @@
 | `backend/src/storage/` | FileStore, schema (`fields.json`), computed views, session store, bootstrap |
 | `backend/src/utils/` | encryption, network policy, redaction, XML parser, error helpers |
 | `frontend/src/` | React 19 + Vite + Tailwind/MUI: pages, shared components, hooks, API client |
-| `scripts/` | test runner, publish check |
+| `scripts/` | test runner |
 
 Dependencies หลักของ backend: `express` 5, `express-session`, `helmet`, `cors`, `axios`, `xml2js`, `zod`
 — **ไม่มีฐานข้อมูลภายนอก** (ชื่อ `pool` เป็นแค่ชื่อเดิม ไม่ใช่ PostgreSQL และไม่รับ SQL string)
@@ -367,7 +367,7 @@ Build ด้วย Vite (`npm run build`) → `frontend/dist` ซึ่ง backe
 | `SRM_STATE_FILE` | `<data>/application.json` | ไฟล์ state |
 | `APP_BUILD_ID` | — | ส่งกลับใน header `X-App-Build` |
 
-### Secrets (สร้างอัตโนมัติ — อย่าใส่ใน Git)
+### Secrets (สร้างอัตโนมัติ — ห้ามเปิดเผย)
 | ตัวแปร | ความหมาย |
 |--------|---------|
 | `SESSION_SECRET` | ลงนาม session cookie |
@@ -398,4 +398,4 @@ Build ด้วย Vite (`npm run build`) → `frontend/dist` ซึ่ง backe
 - ยังไม่มี portable backup export / restore ข้ามเครื่อง
 - Unit tests ใช้ test double — ไม่แทนการทดสอบ live recovery กับ VMware จริง
 
-ดู [04-validation.md](04-validation.md) และ [SECURITY.md](../SECURITY.md)
+ดู [03-validation.md](03-validation.md) และ [SECURITY.md](../SECURITY.md)

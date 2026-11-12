@@ -328,8 +328,7 @@ session อื่นของบัญชีจะถูกยกเลิก
 2. สำรอง **ข้อมูล + key ที่คู่กัน** เสมอ (ข้อมูลโดยไม่มี key = ถอดรหัสไม่ได้)
 3. เก็บ backup ในที่ปลอดภัยตามนโยบายองค์กร
 
-> ⚠️ **ห้ามนำ `data/`, backup หรือ `runtime-secrets.json` ขึ้น GitHub**
-> (`.gitignore` และ `npm run check:publish` กันไว้แล้ว)
+> ⚠️ **ห้ามแชร์ `data/`, backup หรือ `runtime-secrets.json` ให้ผู้อื่น** เพราะมี keys และรหัสผ่านที่เข้ารหัสไว้
 >
 > ℹ️ รุ่นนี้ยังไม่มี portable backup / import wizard บนเว็บ
 
@@ -342,20 +341,18 @@ session อื่นของบัญชีจะถูกยกเลิก
 | `npm test` | รัน unit tests ทั้งหมด (`*.test.js` / `*.test.mjs` ใน backend, frontend, scripts) ด้วย `node --test` |
 | `npm run lint` | ตรวจโค้ด frontend ด้วย oxlint |
 | `npm run build` | build หน้าเว็บไปที่ `frontend/dist` |
-| `npm run check:publish` | ตรวจไฟล์ที่จะขึ้น Git: secrets, private IP, path ส่วนตัว, ไฟล์ต้องห้าม |
 | `npm audit --audit-level=moderate` | ตรวจช่องโหว่ dependencies (ทำซ้ำใน `backend/` และ `frontend/`) |
 
 ```bash
-# ตรวจครบก่อน push
+# ตรวจครบทุกอย่าง
 npm test
 npm run lint
-npm run check:publish
 npm audit --audit-level=moderate
 npm --prefix backend audit --audit-level=moderate
 npm --prefix frontend audit --audit-level=moderate
 ```
 
-> ℹ️ tests ใช้ข้อมูลจำลอง ไม่แตะ VMware หรือ AI จริง — ผลและข้อจำกัดอยู่ใน [04-validation.md](04-validation.md)
+> ℹ️ tests ใช้ข้อมูลจำลอง ไม่แตะ VMware หรือ AI จริง — ผลและข้อจำกัดอยู่ใน [03-validation.md](03-validation.md)
 
 ---
 

@@ -5,7 +5,7 @@
 รันเป็น **เว็บแอป** ด้วย Node.js หรือ Docker โดยตั้งค่าทุกอย่างบนหน้าเว็บ
 ไม่ต้องสร้าง `.env` หรือแก้ไฟล์ connection
 
-> ชื่อโปรเจกต์ใน repository คือ **Project Monitoring SRM with KMITL** — เอกสารชุดนี้เรียกรวมว่า "SRM Monitoring"
+> ชื่อโปรเจกต์คือ **Project Monitoring SRM with KMITL** — เอกสารชุดนี้เรียกรวมว่า "SRM Monitoring"
 
 ---
 
@@ -15,8 +15,7 @@
 |---|------|---------|-------------|
 | 1 | [01-user-manual.md](01-user-manual.md) | **คู่มือผู้ใช้** — ติดตั้ง, สร้างบัญชีแรก, เพิ่ม server, Sync, ใช้งานแต่ละหน้า, Replication / Protection group / Recovery plan, AI, CA, บัญชีผู้ใช้, แก้ปัญหาเบื้องต้น | ผู้ดูแลระบบ / ผู้ใช้งาน |
 | 2 | [02-architecture.md](02-architecture.md) | **สถาปัตยกรรม & การทำงานภายใน** — startup, middleware pipeline, authentication, FileStore, VMware adapters, Sync coordinator, write engine, network policy, AI, ตัวแปรตั้งค่า | ผู้พัฒนา / ผู้ดูแลเชิงลึก |
-| 3 | [03-github-release.md](03-github-release.md) | **ขึ้น GitHub อย่างปลอดภัย** — publish check, pre-commit hook และ CI | ผู้พัฒนา / ผู้ดูแล repo |
-| 4 | [04-validation.md](04-validation.md) | **ผลตรวจ** — tests, build, audit และขอบเขตที่ยังไม่ได้ทดสอบกับ VMware จริง | ผู้ตรวจรับ / QA |
+| 3 | [03-validation.md](03-validation.md) | **ผลตรวจ** — tests, build, audit และขอบเขตที่ยังไม่ได้ทดสอบกับ VMware จริง | ผู้ตรวจรับ / QA |
 | — | [../SECURITY.md](../SECURITY.md) | **นโยบายความปลอดภัย** — ขอบเขต, การเก็บ secrets, การส่งข้อมูลออกภายนอก, การรายงานช่องโหว่ | ทุกคน |
 
 ---
@@ -81,5 +80,4 @@ docker compose up -d --build
 
 ครั้งแรกระบบจะพาไปหน้า **Create your administrator account** ดูขั้นตอนละเอียดที่ [01-user-manual.md](01-user-manual.md)
 
-> ⚠️ ห้ามนำโฟลเดอร์ `data/`, backups, `runtime-secrets.json` หรือไฟล์คู่มือที่มีภาพหน้าจอระบบจริงขึ้น GitHub
-> รัน `npm run check:publish` ก่อน push ทุกครั้ง (ดู [03-github-release.md](03-github-release.md))
+> ⚠️ ห้ามแชร์โฟลเดอร์ `data/`, backups หรือ `runtime-secrets.json` ให้ผู้อื่น เพราะมี keys และรหัสผ่านที่เข้ารหัสไว้
