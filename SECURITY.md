@@ -8,7 +8,7 @@ VMware passwords และ AI key เข้ารหัส AES-256-GCM ไม่
 
 Backend สร้าง matching keys ใน local data directory (`runtime-secrets.json`) ด้วยสิทธิ์ไฟล์จำกัด; บน Windows ยังขึ้นกับ ACL ของ OS profile การเข้าถึง OS user account, data directory และ backups เป็นส่วนหนึ่งของ trust boundary แอปไม่ป้องกันเครื่องที่ถูกยึดสิทธิ์โดยผู้โจมตีแล้ว
 
-ห้าม commit runtime data, sessions, keys, credentials, backups หรือ logs ตัวตรวจ publish เป็น pattern check บางชนิด ไม่ครอบคลุม secret ทุกประเภทและไม่ตรวจ history เปิด GitHub secret scanning/push protection ตามที่ repository รองรับ หากเคยรั่วให้ revoke/rotate กับ provider การลบไฟล์ไม่เพิกถอน key และไม่ลบ Git history
+ห้ามแชร์ runtime data, sessions, keys, credentials, backups หรือ logs ให้ผู้อื่น หาก credentials หรือ API key เคยรั่วให้ revoke/rotate กับ provider ทันที การลบไฟล์ไม่ได้เพิกถอน key
 
 ## Network
 
@@ -22,6 +22,4 @@ AI ปิดจน Admin เปิด กำหนด model/key และยื�
 
 ## Reporting
 
-รายงานช่องโหว่ผ่านช่องทางส่วนตัวของผู้ดูแลหรือ GitHub Private vulnerability reporting หากเปิดไว้ ห้ามใส่ credentials/inventory จริงใน public issue
-
-[GitHub secret scanning](https://docs.github.com/en/code-security/concepts/secret-security/secret-scanning)
+รายงานช่องโหว่ผ่านช่องทางส่วนตัวของผู้ดูแลระบบ ห้ามแนบ credentials หรือ inventory จริงในรายงานที่เปิดเผยต่อสาธารณะ
