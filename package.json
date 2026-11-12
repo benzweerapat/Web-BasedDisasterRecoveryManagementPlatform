@@ -19,7 +19,7 @@
   "main": "desktop/main.cjs",
   "author": "SRM Monitoring contributors",
   "devDependencies": {
-    "electron": "45.1.0",
+    "electron": "45.2.3",
     "electron-builder": "26.18.0"
   }
 }
